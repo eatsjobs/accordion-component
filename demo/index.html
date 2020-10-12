@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo"></div>
+
+  <script type="module">
+    import { html, render } from 'lit-html';
+    import '../accordion.js';
+    
+    render(
+      html`
+      <accordion-group>
+          <accordion-item title="My header title" id="0">
+            <accordion-panel>
+              A
+            </accordion-panel>
+          </accordion-item>
+          <accordion-item accordion-item title="My header title 1" id="1">
+            <accordion-panel>B</accordion-panel>
+          </accordion-item>
+          <accordion-item accordion-item title="My header title 2" id="2">
+            <accordion-panel>C</accordion-panel>
+          </accordion-item>
+        </accordion-group>
+      `,
+      document.querySelector('#demo')
+    );
+  </script>
+</body>
+</html>
