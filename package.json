@@ -1,7 +1,7 @@
 {
   "name": "accordion-component",
-  "version": "0.0.0",
-  "description": "Webcomponent accordion-component following open-wc recommendations",
+  "version": "0.0.1",
+  "description": "accordion-component following open-wc recommendations",
   "author": "accordion-component",
   "license": "MIT",
   "main": "index.js",

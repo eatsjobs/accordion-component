@@ -4,13 +4,23 @@ This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) reco
 
 ## Installation
 ```bash
-npm i accordion-component
+npm i @eatsjobs/accordion-component
 ```
 
 ## Usage
 ```html
+<style>
+ html {
+  --accordion-border-color: hsl(0, 0%, 82%);
+  --accordion-border-width: 2px;
+  --accordion-border-style: solid;
+  --accordion-border-radius: 7px;
+  --accordion-container-width: 20em;
+  --accordion-border-color-focus: hsl(216, 94%, 73%);
+}
+</style>
 <script type="module">
-  import 'accordion-component/accordion-component.js';
+  import 'accordion-component/accordion.js';
 </script>
 
 <accordion-group>

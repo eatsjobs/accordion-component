@@ -1,10 +1,13 @@
 import { css, html, LitElement } from 'lit-element';
 import { openAnimation, closeAnimation } from './CollapsibleAnimation.js';
-import { ItemClosed, ItemOpened, ItemClicked } from './Events.js';
+import {
+  ItemClosed,
+  ItemOpened,
+  ItemClicked,
+  ItemFocused,
+  ItemBlurred,
+} from './Events.js';
 
-/**
- *
- */
 export class AccordionItem extends LitElement {
   static get styles() {
     return css`
@@ -15,6 +18,9 @@ export class AccordionItem extends LitElement {
         border-radius: 5px;
         padding: 0.25em;
         outline: none;
+      }
+      .Accordion-trigger:focus .Accordion-title {
+        border-color: var(--accordion-border-color-focus, hsl(216, 94%, 73%));
       }
       .Accordion-icon {
         border: solid hsl(0, 0%, 62%);
@@ -27,6 +33,7 @@ export class AccordionItem extends LitElement {
         transform: translateY(-60%) rotate(45deg);
         width: 0.5rem;
       }
+
       .Accordion-trigger {
         background: none;
         color: hsl(0, 0%, 13%);
@@ -47,8 +54,9 @@ export class AccordionItem extends LitElement {
 
       .Accordion-trigger:focus,
       .Accordion-trigger:hover {
-        background: hsl(216, 94%, 94%);
+        background: var(--accordion-item-background-hover, hsl(216, 94%, 94%));
       }
+
       .Accordion-panel {
         margin: 0;
         height: auto;
@@ -113,7 +121,7 @@ export class AccordionItem extends LitElement {
     return new Promise(resolve => {
       animation.onfinish = () => {
         resolve({ id: this.id });
-        this.open = !open;
+        this.open = open;
       };
     });
   }
@@ -142,7 +150,7 @@ export class AccordionItem extends LitElement {
     if (this._animating) {
       return;
     }
-    this.dispatchEvent(ItemClicked({ id: this.id }));
+    this.dispatchEvent(ItemClicked({ detail: { id: this.id } }));
     this._animating = true;
     if (this.open) {
       await this.collapse();
@@ -151,14 +159,26 @@ export class AccordionItem extends LitElement {
     }
     this._animating = false;
     this.dispatchEvent(
-      this.open ? ItemOpened({ id: this.id }) : ItemClosed({ id: this.id })
+      this.open
+        ? ItemOpened({ detail: { id: this.id } })
+        : ItemClosed({ detail: { id: this.id } })
     );
+  }
+
+  _onFocus() {
+    this.dispatchEvent(ItemFocused({ detail: { id: this.id }, bubbles: true }));
+  }
+
+  _onBlur() {
+    this.dispatchEvent(ItemBlurred({ detail: { id: this.id }, bubbles: true }));
   }
 
   render() {
     return html`
       <div class="AccordionItem">
         <button
+          @focus=${this._onFocus}
+          @blur=${this._onBlur}
           @click=${this.onClick}
           class="Accordion-trigger"
           id="accordion-${this.id}"

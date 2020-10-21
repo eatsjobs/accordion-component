@@ -6,28 +6,41 @@ export class AccordionComponent extends LitElement {
       .Accordion {
         margin: 0;
         padding: 0;
-        border: 2px solid hsl(0, 0%, 82%);
-        border-radius: 7px;
-        width: 20em;
-      }
-
-      .Accordion h3 {
-        margin: 0;
-        padding: 0;
+        border-color: var(--accordion-border-color, hsl(0, 0%, 82%));
+        border-width: var(--accordion-border-width, 2px);
+        border-style: var(--accordion-border-style, solid);
+        border-radius: var(--accordion-border-radius, 7px);
+        width: var(--accordion-container-width, 20em);
       }
 
       .Accordion.focus {
-        border-color: hsl(216, 94%, 73%);
+        border-color: var(--accordion-border-color-focus, hsl(216, 94%, 73%));
       }
-
-      .Accordion.focus h3 {
-        background-color: hsl(0, 0%, 97%);
-      }
-
-      .Accordion > * + * {
-        border-top: 1px solid hsl(0, 0%, 82%);
-      }
+      /*.Accordion ::slotted(.Accordion-trigger) {
+        border-bottom: 1px solid hsl(0, 0%, 82%);
+      }*/
     `;
+  }
+
+  constructor() {
+    super();
+    this.addEventListener('item-focused', this.onItemEvents);
+    this.addEventListener('item-blurred', this.onItemEvents);
+  }
+
+  onItemEvents(event) {
+    switch (event.type) {
+      case 'item-focused':
+        return this.container.classList.add('focus');
+      case 'item-blurred':
+        return this.container.classList.remove('focus');
+      default:
+        return null;
+    }
+  }
+
+  get container() {
+    return this.shadowRoot.querySelector('.Accordion');
   }
 
   render() {
