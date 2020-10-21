@@ -17,23 +17,25 @@
     "test": "web-test-runner --coverage",
     "test:watch": "web-test-runner --watch",
     "storybook": "start-storybook",
-    "storybook:build": "build-storybook"
+    "storybook:build": "build-storybook",
+    "deploy": "gh-pages -d storybook-static"
   },
   "dependencies": {
     "lit-html": "^1.1.2",
     "lit-element": "^2.2.1"
   },
   "devDependencies": {
-    "@web/dev-server": "^0.0.12",
-    "eslint": "^6.1.0",
+    "@open-wc/demoing-storybook": "^2.0.0",
     "@open-wc/eslint-config": "^2.0.0",
-    "prettier": "^2.0.4",
+    "@open-wc/testing": "^2.0.0",
+    "@web/dev-server": "^0.0.12",
+    "@web/test-runner": "^0.7.41",
+    "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.11.0",
+    "gh-pages": "^3.1.0",
     "husky": "^1.0.0",
     "lint-staged": "^10.0.0",
-    "@web/test-runner": "^0.7.41",
-    "@open-wc/testing": "^2.0.0",
-    "@open-wc/demoing-storybook": "^2.0.0"
+    "prettier": "^2.0.4"
   },
   "eslintConfig": {
     "extends": [
