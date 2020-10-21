@@ -1,7 +1,7 @@
 # \<accordion-component>
 
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
-
+Storybook demo [https://eatsjobs.github.io/accordion-component/](https://eatsjobs.github.io/accordion-component/)
 ## Installation
 ```bash
 npm i @eatsjobs/accordion-component
