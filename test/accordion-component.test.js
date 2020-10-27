@@ -1,8 +1,5 @@
-import { html, fixture, expect } from '@open-wc/testing';
-
+import { html, fixture, expect, oneEvent, aTimeout } from '@open-wc/testing';
 import '../accordion.js';
-
-const delay = time => new Promise(res => setTimeout(() => res(), time));
 
 describe('AccordionComponent', () => {
   it('has first opened default title', async () => {
@@ -22,17 +19,16 @@ describe('AccordionComponent', () => {
   it('close default opened', async () => {
     const el = await fixture(html`
       <accordion-group>
-        <accordion-item title="My header title" id="0" open> A </accordion-item>
+        <accordion-item title="My header title" id="0"> A </accordion-item>
         <accordion-item title="My header title 1" id="1"> B </accordion-item>
         <accordion-item title="My header title 2" id="2"> C </accordion-item>
       </accordion-group>
     `);
-    el.querySelector('accordion-item')
-      .shadowRoot.querySelector('button')
-      .click();
-    // wait animation end
-    await delay(200);
-    expect(el.querySelector('accordion-item').open).to.equal(false);
+    const [first] = el.querySelectorAll('accordion-item');
+    first.shadowRoot.querySelector('button').click();
+    const { detail } = await oneEvent(first, 'item-opened');
+    expect(detail.id).to.equal('0');
+    expect(first.open).to.equal(true);
   });
 
   it('passes the a11y audit', async () => {

@@ -1,7 +1,9 @@
 # \<accordion-component>
 
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
+
 Storybook demo [https://eatsjobs.github.io/accordion-component/](https://eatsjobs.github.io/accordion-component/)
+
 ## Installation
 ```bash
 npm i @eatsjobs/accordion-component
@@ -17,6 +19,8 @@ npm i @eatsjobs/accordion-component
   --accordion-border-radius: 7px;
   --accordion-container-width: 20em;
   --accordion-border-color-focus: hsl(216, 94%, 73%);
+  --accordion-item-background-hover: hsl(216, 94%, 94%);
+  --accordion-button-text-color: hsl(0, 0%, 13%);
 }
 </style>
 <script type="module">
@@ -25,15 +29,13 @@ npm i @eatsjobs/accordion-component
 
 <accordion-group>
   <accordion-item title="My header title" id="0">
-    <accordion-panel>
-      A
-    </accordion-panel>
+    A
   </accordion-item>
   <accordion-item accordion-item title="My header title 1" id="1">
-    <accordion-panel>B</accordion-panel>
+    B
   </accordion-item>
   <accordion-item accordion-item title="My header title 2" id="2">
-    <accordion-panel>C</accordion-panel>
+    C
   </accordion-item>
 </accordion-group>
 ```

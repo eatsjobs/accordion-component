@@ -23,7 +23,7 @@ export class AccordionItem extends LitElement {
         border-color: var(--accordion-border-color-focus, hsl(216, 94%, 73%));
       }
       .Accordion-icon {
-        border: solid hsl(0, 0%, 62%);
+        border: solid var(--accordion-border-color, hsl(0, 0%, 62%));
         border-width: 0 2px 2px 0;
         height: 0.5rem;
         pointer-events: none;
@@ -36,7 +36,7 @@ export class AccordionItem extends LitElement {
 
       .Accordion-trigger {
         background: none;
-        color: hsl(0, 0%, 13%);
+        color: var(--accordion-item-text-color, hsl(0, 0%, 13%));
         display: block;
         font-size: 1rem;
         font-weight: normal;

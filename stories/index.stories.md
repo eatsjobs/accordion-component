@@ -30,6 +30,8 @@ npm i accordion-component
   --accordion-border-radius: 7px;
   --accordion-container-width: 20em;
   --accordion-border-color-focus: hsl(216, 94%, 73%);
+  --accordion-item-background-hover: hsl(216, 94%, 94%);
+  --accordion-item-text-color: hsl(0, 0%, 13%));
 }
 </style>
 <script type="module">
@@ -77,19 +79,5 @@ export const Playground = () => html`
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in mi congue, faucibus dolor ut, bibendum orci. Etiam sit amet lacus et felis sodales commodo. Phasellus dignissim aliquet lectus. 
             </accordion-item>
         </accordion-group>
-`;
-```
-
-## Variations
-
-###### Custom Title
-
-```js preview-story
-export const CustomTitle = () => html`
-  <accordion-group>
-    <accordion-item title="CustomTitle" id="0">
-      Content
-    </accordion-item>
-  </accordion-group>
 `;
 ```
