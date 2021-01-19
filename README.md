@@ -13,14 +13,14 @@ npm i @eatsjobs/accordion-component
 ```html
 <style>
  html {
-  --accordion-border-color: hsl(0, 0%, 82%);
-  --accordion-border-width: 2px;
-  --accordion-border-style: solid;
-  --accordion-border-radius: 7px;
-  --accordion-container-width: 20em;
-  --accordion-border-color-focus: hsl(216, 94%, 73%);
-  --accordion-item-background-hover: hsl(216, 94%, 94%);
-  --accordion-button-text-color: hsl(0, 0%, 13%);
+  --border-color: hsl(0, 0%, 82%);
+  --border-width: 2px;
+  --border-style: solid;
+  --border-radius: 7px;
+  --container-width: 20em;
+  --border-color-focus: hsl(216, 94%, 73%);
+  --item-background-hover: hsl(216, 94%, 94%);
+  --button-text-color: hsl(0, 0%, 13%);
 }
 </style>
 <script type="module">
