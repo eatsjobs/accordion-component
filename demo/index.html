@@ -1,47 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-GB">
-<head>
-  <meta charset="utf-8">
-  <style>
-    html {
-      --accordion-border-color: hsl(0, 0%, 82%);
-      --accordion-border-width: 2px;
-      --accordion-border-style: solid;
-      --accordion-border-radius: 7px;
-      --accordion-container-width: 20em;
-      --accordion-border-color-focus: hsl(216, 94%, 73%);
-      --accordion-item-background-hover: hsl(216, 94%, 94%);
-      --accordion-button-text-color: hsl(0, 0%, 13%);
-    }
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      accordion-group {
+        --border-color: hsl(0, 0%, 82%);
+        --border-width: 2px;
+        --border-style: solid;
+        --border-radius: 7px;
+        --container-width: 20em;
+        --border-color-focus: hsl(216, 94%, 73%);
+        --item-background-hover: hsl(216, 94%, 94%);
+        --button-text-color: hsl(0, 0%, 13%);
+      }
 
-    body {
-      background: #fafafa;
-    }
-  </style>
-</head>
-<body>
-  <div id="demo"></div>
+      body {
+        background: #fafafa;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo"></div>
 
-  <script type="module">
-    import { html, render } from 'lit-html';
-    import '../accordion.js';
-    
-    render(
-      html`
-      <accordion-group>
-          <accordion-item title="My header title" id="0">
-              A
-          </accordion-item>
-          <accordion-item accordion-item title="My header title 1" id="1">
-            B
-          </accordion-item>
-          <accordion-item accordion-item title="My header title 2" id="2">
-            C
-          </accordion-item>
-        </accordion-group>
-      `,
-      document.querySelector('#demo')
-    );
-  </script>
-</body>
+    <script type="module">
+      import { html, render } from 'lit-html';
+      import '../accordion.js';
+
+      render(
+        html`
+          <accordion-group>
+            <accordion-item title="My header title" id="0"> A </accordion-item>
+            <accordion-item accordion-item title="My header title 1" id="1">
+              B
+            </accordion-item>
+            <accordion-item accordion-item title="My header title 2" id="2">
+              C
+            </accordion-item>
+          </accordion-group>
+        `,
+        document.querySelector('#demo')
+      );
+    </script>
+  </body>
 </html>

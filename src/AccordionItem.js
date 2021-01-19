@@ -20,10 +20,10 @@ export class AccordionItem extends LitElement {
         outline: none;
       }
       .Accordion-trigger:focus .Accordion-title {
-        border-color: var(--accordion-border-color-focus, hsl(216, 94%, 73%));
+        border-color: var(--border-color-focus, hsl(216, 94%, 73%));
       }
       .Accordion-icon {
-        border: solid var(--accordion-border-color, hsl(0, 0%, 62%));
+        border: solid var(--border-color, hsl(0, 0%, 62%));
         border-width: 0 2px 2px 0;
         height: 0.5rem;
         pointer-events: none;
@@ -36,7 +36,7 @@ export class AccordionItem extends LitElement {
 
       .Accordion-trigger {
         background: none;
-        color: var(--accordion-item-text-color, hsl(0, 0%, 13%));
+        color: var(--item-text-color, hsl(0, 0%, 13%));
         display: block;
         font-size: 1rem;
         font-weight: normal;
@@ -54,7 +54,7 @@ export class AccordionItem extends LitElement {
 
       .Accordion-trigger:focus,
       .Accordion-trigger:hover {
-        background: var(--accordion-item-background-hover, hsl(216, 94%, 94%));
+        background: var(--item-background-hover, hsl(216, 94%, 94%));
       }
 
       .Accordion-panel {
@@ -150,7 +150,9 @@ export class AccordionItem extends LitElement {
     if (this._animating) {
       return;
     }
-    this.dispatchEvent(ItemClicked({ detail: { id: this.id } }));
+    this.dispatchEvent(
+      ItemClicked({ detail: { id: this.id }, bubbles: true, composed: true })
+    );
     this._animating = true;
     if (this.open) {
       await this.collapse();
@@ -160,17 +162,21 @@ export class AccordionItem extends LitElement {
     this._animating = false;
     this.dispatchEvent(
       this.open
-        ? ItemOpened({ detail: { id: this.id } })
-        : ItemClosed({ detail: { id: this.id } })
+        ? ItemOpened({ detail: { id: this.id }, bubbles: true, composed: true })
+        : ItemClosed({ detail: { id: this.id }, bubbles: true, composed: true })
     );
   }
 
   _onFocus() {
-    this.dispatchEvent(ItemFocused({ detail: { id: this.id }, bubbles: true }));
+    this.dispatchEvent(
+      ItemFocused({ detail: { id: this.id }, bubbles: true, composed: true })
+    );
   }
 
   _onBlur() {
-    this.dispatchEvent(ItemBlurred({ detail: { id: this.id }, bubbles: true }));
+    this.dispatchEvent(
+      ItemBlurred({ detail: { id: this.id }, bubbles: true, composed: true })
+    );
   }
 
   render() {

@@ -1,4 +1,4 @@
-import { html, fixture, expect, oneEvent, aTimeout } from '@open-wc/testing';
+import { html, fixture, expect, oneEvent } from '@open-wc/testing';
 import '../accordion.js';
 
 describe('AccordionComponent', () => {

@@ -6,11 +6,11 @@ export class AccordionComponent extends LitElement {
       .Accordion {
         margin: 0;
         padding: 0;
-        border-color: var(--accordion-border-color, hsl(0, 0%, 82%));
-        border-width: var(--accordion-border-width, 2px);
-        border-style: var(--accordion-border-style, solid);
-        border-radius: var(--accordion-border-radius, 7px);
-        width: var(--accordion-container-width, 20em);
+        border-color: var(--border-color, hsl(0, 0%, 82%));
+        border-width: var(--border-width, 2px);
+        border-style: var(--border-style, solid);
+        border-radius: var(--border-radius, 7px);
+        width: var(--width, 20em);
       }
 
       .Accordion.focus {
