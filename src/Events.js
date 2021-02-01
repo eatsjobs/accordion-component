@@ -1,3 +1,11 @@
+export const Events = {
+  CLICKED: 'item-clicked',
+  BLURRED: 'item-blurred',
+  FOCUSED: 'item-focused',
+  OPENED: 'item-opened',
+  CLOSED: 'item-closed',
+};
+
 /**
  *
  * @param {String} name
@@ -17,14 +25,14 @@ export function createEvent(name) {
  * @event item-clicked
  * @param {number} id the id of the accordion-item
  */
-export const ItemClicked = createEvent('item-clicked');
+export const ItemClicked = createEvent(Events.CLICKED);
 /**
  * Fired when `accordion-item` has finish to open itself
  *
  * @event item-opened
  * @param {number} id the id of the accordion-item
  */
-export const ItemOpened = createEvent('item-opened');
+export const ItemOpened = createEvent(Events.OPENED);
 
 /**
  * Fired when `accordion-item` has finish to open itself
@@ -32,14 +40,14 @@ export const ItemOpened = createEvent('item-opened');
  * @event item-closed
  * @param {number} id the id of the accordion-item
  */
-export const ItemClosed = createEvent('item-closed');
+export const ItemClosed = createEvent(Events.CLOSED);
 /**
  * Fired when `accordion-item` has been focused
  *
  * @event item-focused
  * @param {number} id the id of the accordion-item
  */
-export const ItemFocused = createEvent('item-focused');
+export const ItemFocused = createEvent(Events.FOCUSED);
 
 /**
  * Fired when `accordion-item` has been focused
@@ -47,4 +55,4 @@ export const ItemFocused = createEvent('item-focused');
  * @event item-blurred
  * @param {number} id the id of the accordion-item
  */
-export const ItemBlurred = createEvent('item-blurred');
+export const ItemBlurred = createEvent(Events.BLUR);

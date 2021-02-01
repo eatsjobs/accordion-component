@@ -32,6 +32,8 @@ export class AccordionItem extends LitElement {
         top: 50%;
         transform: translateY(-60%) rotate(45deg);
         width: 0.5rem;
+        transition: transform 150ms ease;
+        will-change: transform;
       }
 
       .Accordion-trigger {
@@ -64,8 +66,14 @@ export class AccordionItem extends LitElement {
         overflow: hidden;
       }
 
-      .Accordion-panel > div {
+      .Accordion-panel > ::slotted([slot='content']) {
         padding: 1em 1.5em;
+      }
+
+      .AccordionItem {
+        border-bottom-color: var(--border-color, hsl(0, 0%, 82%));
+        border-bottom-width: var(--border-width, 1px);
+        border-bottom-style: var(--border-style, solid);
       }
 
       button {
@@ -76,7 +84,6 @@ export class AccordionItem extends LitElement {
 
   static get properties() {
     return {
-      title: { type: String, reflect: true },
       id: { type: String, reflect: true },
       open: { type: Boolean, reflect: true },
     };
@@ -89,7 +96,6 @@ export class AccordionItem extends LitElement {
   constructor() {
     super();
     this.id = '';
-    this.title = '';
     this.open = false;
     this._animating = false;
   }
@@ -194,7 +200,7 @@ export class AccordionItem extends LitElement {
           ?hidden=${!this.open}
         >
           <span class="Accordion-title">
-            ${this.title}
+            <slot name="title"></slot>
             <span class="Accordion-icon"></span>
           </span>
         </button>
@@ -205,9 +211,7 @@ export class AccordionItem extends LitElement {
           aria-labelledby="accordion-${this.id}"
           class="Accordion-panel"
         >
-          <div>
-            <slot></slot>
-          </div>
+          <slot name="content"></slot>
         </div>
       </div>
     `;

@@ -24,17 +24,25 @@
 
     <script type="module">
       import { html, render } from 'lit-html';
-      import '../accordion.js';
+      import { AccordionComponent, AccordionItem } from '../index.js';
+
+      customElements.define('accordion-group', AccordionComponent);
+      customElements.define('accordion-item', AccordionItem);
 
       render(
         html`
           <accordion-group>
-            <accordion-item title="My header title" id="0"> A </accordion-item>
-            <accordion-item accordion-item title="My header title 1" id="1">
-              B
+            <accordion-item id="0">
+              <div slot="title">Title</div>
+              <div slot="content">A</div>
             </accordion-item>
-            <accordion-item accordion-item title="My header title 2" id="2">
-              C
+            <accordion-item id="1">
+              <div slot="title">Title</div>
+              <div slot="content">B</div>
+            </accordion-item>
+            <accordion-item id="2">
+              <div slot="title">Title</div>
+              <div slot="content">C</div>
             </accordion-item>
           </accordion-group>
         `,

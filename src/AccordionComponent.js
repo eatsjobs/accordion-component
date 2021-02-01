@@ -11,36 +11,13 @@ export class AccordionComponent extends LitElement {
         border-style: var(--border-style, solid);
         border-radius: var(--border-radius, 7px);
         width: var(--width, 20em);
+        border-bottom-color: transparent;
       }
 
-      .Accordion.focus {
-        border-color: var(--accordion-border-color-focus, hsl(216, 94%, 73%));
+      .Accordion:focus-within {
+        border-color: var(--border-color-focus, hsl(216, 94%, 73%));
       }
-      /*.Accordion ::slotted(.Accordion-trigger) {
-        border-bottom: 1px solid hsl(0, 0%, 82%);
-      }*/
     `;
-  }
-
-  constructor() {
-    super();
-    this.addEventListener('item-focused', this.onItemEvents);
-    this.addEventListener('item-blurred', this.onItemEvents);
-  }
-
-  onItemEvents(event) {
-    switch (event.type) {
-      case 'item-focused':
-        return this.container.classList.add('focus');
-      case 'item-blurred':
-        return this.container.classList.remove('focus');
-      default:
-        return null;
-    }
-  }
-
-  get container() {
-    return this.shadowRoot.querySelector('.Accordion');
   }
 
   render() {
