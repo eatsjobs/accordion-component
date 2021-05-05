@@ -21,16 +21,16 @@
     "deploy": "gh-pages -d storybook-static"
   },
   "dependencies": {
-    "lit-html": "^1.1.2",
-    "lit-element": "^2.2.1"
+    "lit": "^2.0.0-rc.1"
   },
   "devDependencies": {
     "@open-wc/demoing-storybook": "^2.0.0",
     "@open-wc/eslint-config": "^2.0.0",
     "@open-wc/testing": "^2.0.0",
+    "@rollup/plugin-commonjs": "^18.1.0",
     "@web/dev-server": "^0.0.12",
     "@web/test-runner": "^0.7.41",
-    "@web/test-runner-playwright": "^0.6.4",
+    "@web/test-runner-playwright": "^0.6.6",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.11.0",
     "gh-pages": "^3.1.0",
