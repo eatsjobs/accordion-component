@@ -55,4 +55,4 @@ export const ItemFocused = createEvent(Events.FOCUSED);
  * @event item-blurred
  * @param {number} id the id of the accordion-item
  */
-export const ItemBlurred = createEvent(Events.BLUR);
+export const ItemBlurred = createEvent(Events.BLURRED);
