@@ -11,7 +11,7 @@
  * @property {String} fill
  */
 
-const timing = { duration: 150, fill: 'both', easing: 'ease' };
+const timing = { duration: 200, fill: 'both', easing: 'ease-in-out' };
 
 /**
  * Returns open animation object

@@ -40,15 +40,36 @@ import 'accordion-component/accordion.js';
       <accordion-group>
         <accordion-item id="0" open>
           <div slot="title">My header title 1</div>
-          <div slot="content">Lorem ipsum sit doler amet 1</div>
+          <div slot="content">
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+          </div>
         </accordion-item>
         <accordion-item id="1">
           <div slot="title">My header title 2</div>
-          <div slot="content">Lorem ipsum sit doler amet 2</div>
+          <div slot="content">
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+          </div>
         </accordion-item>
         <accordion-item id="2">
           <div slot="title">My header title 3</div>
-          <div slot="content">Lorem ipsum sit doler amet 3</div>
+          <div slot="content">
+            Lorem ipsum sit doler amet 3
+              Lorem ipsum sit doler amet 3
+                Lorem ipsum sit doler amet 3
+                  Lorem ipsum sit doler amet 3  Lorem ipsum sit doler amet 3
+                    Lorem ipsum sit doler amet 3
+          </div>
         </accordion-item>
       </accordion-group>
 ```
@@ -58,15 +79,36 @@ export const FirstOpenedFirstRender = () => html`
       <accordion-group>
         <accordion-item id="0" open>
           <div slot="title">My header title 1</div>
-          <div slot="content">Lorem ipsum sit doler amet 1</div>
+          <div slot="content">
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+          </div>
         </accordion-item>
         <accordion-item id="1">
           <div slot="title">My header title 2</div>
-          <div slot="content">Lorem ipsum sit doler amet 2</div>
+          <div slot="content">
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+          </div>
         </accordion-item>
         <accordion-item id="2">
           <div slot="title">My header title 3</div>
-          <div slot="content">Lorem ipsum sit doler amet 3</div>
+          <div slot="content">
+            Lorem ipsum sit doler amet 3
+              Lorem ipsum sit doler amet 3
+                Lorem ipsum sit doler amet 3
+                  Lorem ipsum sit doler amet 3  Lorem ipsum sit doler amet 3
+                    Lorem ipsum sit doler amet 3
+          </div>
         </accordion-item>
       </accordion-group>
 `;
@@ -75,17 +117,38 @@ export const FirstOpenedFirstRender = () => html`
 ```js preview-story
 export const Playground = () => html`
       <accordion-group>
-        <accordion-item id="0" open>
+        <accordion-item id="0">
           <div slot="title">My header title 1</div>
-          <div slot="content">Lorem ipsum sit doler amet 1</div>
+          <div slot="content">
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+            Lorem ipsum sit doler amet 1
+          </div>
         </accordion-item>
         <accordion-item id="1">
           <div slot="title">My header title 2</div>
-          <div slot="content">Lorem ipsum sit doler amet 2</div>
+          <div slot="content">
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+            Lorem ipsum sit doler amet 2
+          </div>
         </accordion-item>
         <accordion-item id="2">
           <div slot="title">My header title 3</div>
-          <div slot="content">Lorem ipsum sit doler amet 3</div>
+          <div slot="content">
+            Lorem ipsum sit doler amet 3
+              Lorem ipsum sit doler amet 3
+                Lorem ipsum sit doler amet 3
+                  Lorem ipsum sit doler amet 3  Lorem ipsum sit doler amet 3
+                    Lorem ipsum sit doler amet 3
+          </div>
         </accordion-item>
       </accordion-group>
 `;
