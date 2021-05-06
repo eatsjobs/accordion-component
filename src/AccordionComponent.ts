@@ -1,7 +1,7 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, TemplateResult, CSSResultGroup } from 'lit';
 
 export class AccordionComponent extends LitElement {
-  static get styles() {
+  static get styles(): CSSResultGroup {
     return css`
       .Accordion {
         margin: 0;
@@ -20,7 +20,7 @@ export class AccordionComponent extends LitElement {
     `;
   }
 
-  render() {
+  render(): TemplateResult {
     return html`<div class="Accordion">
       <slot></slot>
     </div>`;

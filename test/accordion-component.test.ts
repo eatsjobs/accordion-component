@@ -1,4 +1,5 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
+import { AccordionItem } from '../src/AccordionItem.js';
 import '../accordion.js';
 
 describe('AccordionComponent', () => {
@@ -40,9 +41,9 @@ describe('AccordionComponent', () => {
         </accordion-item>
       </accordion-group>
     `);
-    const [first] = el.querySelectorAll('accordion-item');
+    const [first] = el.querySelectorAll<AccordionItem>('accordion-item');
     const listener = oneEvent(first, 'item-closed');
-    first.shadowRoot.querySelector('button').click();
+    first.shadowRoot?.querySelector('button')?.click();
     const { detail } = await listener;
     expect(detail.id).to.equal('0');
   });

@@ -6,17 +6,19 @@ export const Events = {
   CLOSED: 'item-closed',
 };
 
+type EventFactory = { (options: CustomEventInit): CustomEvent };
+
 /**
  *
  * @param {String} name
  * @returns {Function} to have been called with details and options
  */
-export function createEvent(name) {
+export function createEventFactory(name: string): EventFactory {
   /**
-   * @param {Object} options - detail, bubbles, composed
+   * @param {CustomEventInit} options - detail, bubbles, composed
    * @returns {CustomEvent}
    */
-  return options => new CustomEvent(name, options);
+  return (options: CustomEventInit) => new CustomEvent(name, options);
 }
 
 /**
@@ -25,14 +27,14 @@ export function createEvent(name) {
  * @event item-clicked
  * @param {number} id the id of the accordion-item
  */
-export const ItemClicked = createEvent(Events.CLICKED);
+export const ItemClicked = createEventFactory(Events.CLICKED);
 /**
  * Fired when `accordion-item` has finish to open itself
  *
  * @event item-opened
  * @param {number} id the id of the accordion-item
  */
-export const ItemOpened = createEvent(Events.OPENED);
+export const ItemOpened = createEventFactory(Events.OPENED);
 
 /**
  * Fired when `accordion-item` has finish to open itself
@@ -40,19 +42,19 @@ export const ItemOpened = createEvent(Events.OPENED);
  * @event item-closed
  * @param {number} id the id of the accordion-item
  */
-export const ItemClosed = createEvent(Events.CLOSED);
+export const ItemClosed = createEventFactory(Events.CLOSED);
 /**
  * Fired when `accordion-item` has been focused
  *
  * @event item-focused
  * @param {number} id the id of the accordion-item
  */
-export const ItemFocused = createEvent(Events.FOCUSED);
+export const ItemFocused = createEventFactory(Events.FOCUSED);
 
 /**
- * Fired when `accordion-item` has been focused
+ * Fired when `accordion-item` has been blurred
  *
  * @event item-blurred
  * @param {number} id the id of the accordion-item
  */
-export const ItemBlurred = createEvent(Events.BLURRED);
+export const ItemBlurred = createEventFactory(Events.BLURRED);

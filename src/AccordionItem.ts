@@ -1,4 +1,5 @@
-import { css, html, LitElement } from 'lit';
+import { css, html, LitElement, TemplateResult, CSSResultGroup } from 'lit';
+import { property } from 'lit/decorators.js';
 import { openAnimation, closeAnimation } from './CollapsibleAnimation.js';
 import {
   ItemClosed,
@@ -9,7 +10,7 @@ import {
 } from './Events.js';
 
 export class AccordionItem extends LitElement {
-  static get styles() {
+  static get styles(): CSSResultGroup {
     return css`
       .Accordion-title {
         display: block;
@@ -82,25 +83,24 @@ export class AccordionItem extends LitElement {
     `;
   }
 
-  static get properties() {
-    return {
-      id: { type: String, reflect: true },
-      open: { type: Boolean, reflect: true },
-    };
-  }
+  @property({ type: Boolean, reflect: true }) open;
 
-  get container() {
-    return this.shadowRoot.getElementById(`sect-${this.id}`);
+  @property({ type: String, reflect: true }) id;
+
+  private __animating: boolean;
+
+  get container(): HTMLElement | null | undefined {
+    return this.shadowRoot?.getElementById(`sect-${this.id}`);
   }
 
   constructor() {
     super();
     this.id = '';
     this.open = false;
-    this._animating = false;
+    this.__animating = false;
   }
 
-  async firstUpdated() {
+  async firstUpdated(): Promise<void> {
     // handle first render with open property
     await new Promise(r => setTimeout(r, 0));
     if (this.open) {
@@ -115,20 +115,21 @@ export class AccordionItem extends LitElement {
    * @param {Boolean} open - true for expand and false for collapse
    * @returns {Promise<{{ id: String }}>} when the animation ends
    */
-  async _toggle(open) {
-    const { scrollHeight } = this.container;
+  async __toggle(open: boolean): Promise<{ id: string }> {
+    const scrollHeight = this.container?.scrollHeight ?? 0;
     const animationConfig = open
       ? openAnimation(scrollHeight)
       : closeAnimation(scrollHeight);
-    const animation = this.container.animate(
+    const animation = this.container?.animate(
       animationConfig.steps,
       animationConfig.timing
     );
     return new Promise(resolve => {
-      animation.onfinish = () => {
-        resolve({ id: this.id });
-        this.open = open;
-      };
+      if (animation)
+        animation.onfinish = () => {
+          resolve({ id: this.id });
+          this.open = open;
+        };
     });
   }
 
@@ -136,36 +137,36 @@ export class AccordionItem extends LitElement {
    * Collapse the AccordionItem
    * @returns {Promise<{{ id: String }}>}
    */
-  async collapse() {
-    return this._toggle(false);
+  async collapse(): Promise<{ id: string }> {
+    return this.__toggle(false);
   }
 
   /**
    * Expand the AccordionItem
    * @returns {Promise<{{ id: String }}>}
    */
-  async expand() {
-    return this._toggle(true);
+  async expand(): Promise<{ id: string }> {
+    return this.__toggle(true);
   }
 
   /**
    * onClick handler
    * dispatch item-clicked, item-opened | item-closed
    */
-  async onClick() {
-    if (this._animating) {
+  async onClick(): Promise<void> {
+    if (this.__animating) {
       return;
     }
     this.dispatchEvent(
       ItemClicked({ detail: { id: this.id }, bubbles: true, composed: true })
     );
-    this._animating = true;
+    this.__animating = true;
     if (this.open) {
       await this.collapse();
     } else {
       await this.expand();
     }
-    this._animating = false;
+    this.__animating = false;
     this.dispatchEvent(
       this.open
         ? ItemOpened({ detail: { id: this.id }, bubbles: true, composed: true })
@@ -173,19 +174,19 @@ export class AccordionItem extends LitElement {
     );
   }
 
-  _onFocus() {
+  _onFocus(): void {
     this.dispatchEvent(
       ItemFocused({ detail: { id: this.id }, bubbles: true, composed: true })
     );
   }
 
-  _onBlur() {
+  _onBlur(): void {
     this.dispatchEvent(
       ItemBlurred({ detail: { id: this.id }, bubbles: true, composed: true })
     );
   }
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div class="AccordionItem">
         <button

@@ -23,11 +23,8 @@
     <div id="demo"></div>
 
     <script type="module">
-      import { html, render } from 'lit-html';
-      import { AccordionComponent, AccordionItem } from '../index.js';
-
-      customElements.define('accordion-group', AccordionComponent);
-      customElements.define('accordion-item', AccordionItem);
+      import { html, render } from 'lit';
+      import '../dist/accordion.js';
 
       render(
         html`
