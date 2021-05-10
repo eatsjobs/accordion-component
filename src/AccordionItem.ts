@@ -1,5 +1,6 @@
 import { css, html, LitElement, TemplateResult, CSSResultGroup } from 'lit';
 import { property } from 'lit/decorators.js';
+
 import { openAnimation, closeAnimation } from './CollapsibleAnimation.js';
 import {
   ItemClosed,
@@ -83,21 +84,16 @@ export class AccordionItem extends LitElement {
     `;
   }
 
-  @property({ type: Boolean, reflect: true }) open;
+  @property({ type: Boolean, reflect: true })
+  open = false;
 
-  @property({ type: String, reflect: true }) id;
+  @property({ type: String, reflect: true })
+  id = '';
 
-  private __animating: boolean;
+  private __animating = false;
 
   get container(): HTMLElement | null | undefined {
     return this.shadowRoot?.getElementById(`sect-${this.id}`);
-  }
-
-  constructor() {
-    super();
-    this.id = '';
-    this.open = false;
-    this.__animating = false;
   }
 
   async firstUpdated(): Promise<void> {

@@ -1,4 +1,5 @@
-import { html, fixture, expect, oneEvent } from '@open-wc/testing';
+import { fixture, expect, oneEvent } from '@open-wc/testing';
+import { html } from 'lit/static-html.js';
 import { AccordionItem } from '../src/AccordionItem.js';
 import '../accordion.js';
 

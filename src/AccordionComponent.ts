@@ -1,4 +1,4 @@
-import { html, css, LitElement, TemplateResult, CSSResultGroup } from 'lit';
+import { html, css, LitElement, CSSResultGroup, TemplateResult } from 'lit';
 
 export class AccordionComponent extends LitElement {
   static get styles(): CSSResultGroup {
